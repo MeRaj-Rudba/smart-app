@@ -40,10 +40,13 @@ export const LoginForm = (props) => {
         })
         .then(function (response) {
           setLoading(false);
+          if (response.data.status === 200) {
+            props.navigateHome(response);
 
-          props.navigateHome(response);
-
-          // console.log(response);
+            console.log(response);
+          } else {
+            throw new Error();
+          }
         })
         .catch(function (error) {
           setLoading(false);
@@ -71,24 +74,27 @@ export const LoginForm = (props) => {
   return (
     <>
       <Layout style={styles.container}>
-        <Text category="h5">Welcome</Text>
-        <Text>{loginError}</Text>
+        <Text status="success" category="h5">
+          Welcome
+        </Text>
+        <Text status="danger">{loginError}</Text>
         <Input
           label="Username"
           placeholder="Username"
           value={username}
-          caption={usernameError}
           onChangeText={(nextValue) => setUsername(nextValue)}
         />
+        <Text status="danger">{usernameError}</Text>
+
         <Input
           value={password}
           label="Password"
           placeholder="Password"
-          caption={passwordError}
           accessoryRight={renderIcon}
           secureTextEntry={secureTextEntry}
           onChangeText={(nextValue) => setPassword(nextValue)}
         />
+        <Text status="danger">{passwordError}</Text>
       </Layout>
       <Button
         style={styles.button}
