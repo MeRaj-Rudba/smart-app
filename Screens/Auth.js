@@ -18,7 +18,7 @@ export const AuthScreen = ({ navigation }) => {
 
   const changeTheme = () => {
     themeContext.toggleTheme();
-    setDark(true);
+    setDark(!dark);
   };
 
   return (
