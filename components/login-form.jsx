@@ -26,7 +26,7 @@ export const LoginForm = (props) => {
 
   const LoadingIndicator = (props) => (
     <View style={[props.style, styles.indicator]}>
-      <Spinner size="small" />
+      <Spinner status="basic" size="small" />
     </View>
   );
   const login = async () => {
