@@ -2,6 +2,7 @@ import React from "react";
 import { SafeAreaView, Image } from "react-native";
 import { Button, Layout, Text, Avatar } from "@ui-kitten/components";
 import { ThemeContext } from "./theme-context";
+import ThemeButton from "./components/theme-btn";
 
 export const HomeScreen = ({ route, navigation }) => {
   const themeContext = React.useContext(ThemeContext);
@@ -16,6 +17,7 @@ export const HomeScreen = ({ route, navigation }) => {
       <Layout
         style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
       >
+        <ThemeButton />
         <Image
           style={{ height: 300, width: 300 }}
           source={require("./assets/avatar.gif")}
@@ -33,13 +35,6 @@ export const HomeScreen = ({ route, navigation }) => {
           onPress={navigateDetails}
         >
           OPEN DETAILS
-        </Button>
-        <Button
-          status="success"
-          style={{ marginVertical: 4 }}
-          onPress={themeContext.toggleTheme}
-        >
-          TOGGLE THEME
         </Button>
       </Layout>
     </SafeAreaView>
